@@ -3,18 +3,15 @@ extends Node3D
 const DEBUG = false;
 
 @onready var world = $/root/World;
-@onready var vhs_effect: ShaderMaterial = get_node( "/root/World/%VHS" ).material
+@onready var vhs_effect: ShaderMaterial = get_node( "/root/World/%UI/%VHS" ).material
+@onready var tip: Label = $/root/World/%UI/%Tip;
 @onready var environment: WorldEnvironment = get_node("/root/World/%WorldEnvironment")
 
 @onready var compositor: Compositor = environment.compositor;
 @onready var transition_effect: DataMoshEffect = compositor.compositor_effects[0]
 
-var current_scene: Node3D;
-var home_scene: Node3D;
-var player: Player;
-var player_home_spawn: Vector3
+var player: PlayerState;
 
-var tip: Label;
 var reverb_effect: AudioEffectReverb;
 
 func set_up_bus_effect():	
@@ -35,7 +32,6 @@ func do_transition_effect():
 
 func set_player(obj):
 	player = obj
-	tip = player.get_node("Control/Tip")
 
 func set_vhs_intensity(wiggle: float, smear: float):
 	vhs_effect.set_shader_parameter("wiggle", wiggle);

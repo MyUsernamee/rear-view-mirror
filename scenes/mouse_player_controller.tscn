@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dcox2wbo7xlg"]
+
+[ext_resource type="Script" uid="uid://bmsnkfcxyax3q" path="res://scripts/mouse_player_controller.gd" id="1_ce6m8"]
+[ext_resource type="Script" uid="uid://bjpmu5sklv5h8" path="res://addons/raytraced_audio/raytraced_audio_listener.gd" id="2_hyami"]
+[ext_resource type="PackedScene" uid="uid://bf3vwliq6lo2e" path="res://scenes/player_state.tscn" id="3_hyami"]
+
+[node name="MousePlayerController" type="Node3D"]
+script = ExtResource("1_ce6m8")
+
+[node name="Camera" type="Camera3D" parent="."]
+unique_name_in_owner = true
+fov = 90.0
+
+[node name="Ears" type="AudioListener3D" parent="Camera"]
+unique_name_in_owner = true
+script = ExtResource("2_hyami")
+metadata/_custom_type_script = "uid://bjpmu5sklv5h8"
+
+[node name="Player" parent="." instance=ExtResource("3_hyami")]

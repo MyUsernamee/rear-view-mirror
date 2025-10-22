@@ -17,3 +17,12 @@ config/icon="res://icon.svg"
 [autoload]
 
 Game="*res://scripts/game.gd"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/GDTerminal/plugin.cfg", "res://addons/raytraced_audio/plugin.cfg")
+
+[raytraced_audio]
+
+reverb_bus=&"RaytracedReverb"
+ambient_bus=&"RaytracedAmbient"

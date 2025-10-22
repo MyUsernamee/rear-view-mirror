@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://bdqcsycxpmfop"]
+[gd_scene load_steps=8 format=3 uid="uid://bdqcsycxpmfop"]
 
 [ext_resource type="Script" uid="uid://coqxc78olp2t5" path="res://scripts/datamosh.gd" id="1_4wyf3"]
-[ext_resource type="Shader" uid="uid://bjanj1ed6lhg5" path="res://shaders/vhs.gdshader" id="3_4wyf3"]
+[ext_resource type="PackedScene" uid="uid://bi0pw32sej0rt" path="res://scenes/ui.tscn" id="2_rwgxs"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_k0juu"]
 
@@ -30,13 +30,6 @@ metadata/_custom_type_script = "uid://coqxc78olp2t5"
 [sub_resource type="Compositor" id="Compositor_qfnet"]
 compositor_effects = Array[CompositorEffect]([SubResource("CompositorEffect_hn3vi")])
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_k0juu"]
-shader = ExtResource("3_4wyf3")
-shader_parameter/wiggle = 0.03
-shader_parameter/wiggle_speed = 25.0
-shader_parameter/smear = 1.0
-shader_parameter/blur_samples = 15
-
 [node name="World" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -44,13 +37,5 @@ unique_name_in_owner = true
 environment = SubResource("Environment_71j4m")
 compositor = SubResource("Compositor_qfnet")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="VHS" type="ColorRect" parent="CanvasLayer"]
+[node name="UI" parent="." instance=ExtResource("2_rwgxs")]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_k0juu")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
