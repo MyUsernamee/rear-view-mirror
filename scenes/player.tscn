@@ -1,0 +1,233 @@
+[gd_scene load_steps=20 format=3 uid="uid://eaukojbt6f8y"]
+
+[ext_resource type="Script" uid="uid://c54dkdqommv2y" path="res://scripts/player.gd" id="1_bom0h"]
+[ext_resource type="AudioStream" uid="uid://nbi4ch8o22kw" path="res://sounds/noise.wav" id="2_fjrip"]
+[ext_resource type="Script" uid="uid://dd72gghvntq2x" path="res://scripts/sub_viewport_scale.gd" id="2_qxu4u"]
+[ext_resource type="AudioStream" uid="uid://vcq6pf2xw0i1" path="res://sounds/whispers/whisper_stream.tres" id="2_smehm"]
+[ext_resource type="Script" uid="uid://c6m7hdyjr1fpe" path="res://scripts/follow.gd" id="3_dqkch"]
+[ext_resource type="PackedScene" uid="uid://bn6y01ev60dmi" path="res://models/hand.blend" id="3_qhqgy"]
+[ext_resource type="AudioStream" uid="uid://nfxk88oa3itd" path="res://sounds/footsteps/footstep_stream.tres" id="4_smehm"]
+[ext_resource type="Script" uid="uid://bjpmu5sklv5h8" path="res://addons/raytraced_audio/raytraced_audio_listener.gd" id="5_tuyoq"]
+
+[sub_resource type="Curve" id="Curve_jhx03"]
+_limits = [0.0, 0.4, 0.0, 200.0]
+_data = [Vector2(50, 0), 0.0, 0.0, 0, 0, Vector2(100, 0.4), 0.0, 0.0, 0, 0]
+point_count = 2
+metadata/_snap_enabled = true
+metadata/_snap_count = 20
+
+[sub_resource type="Curve" id="Curve_o8fc1"]
+_limits = [0.0, 1.0, 0.0, 200.0]
+_data = [Vector2(59.574, 0), 0.0, 0.0, 0, 0, Vector2(200, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_xo05s"]
+_limits = [0.03, 0.2, 0.0, 200.0]
+_data = [Vector2(34.043, 0.03), 0.0, 0.0, 0, 0, Vector2(200, 0.2), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_dss4m"]
+_limits = [1.0, 2.0, 0.0, 200.0]
+_data = [Vector2(34.043, 1), 0.0, 0.0, 0, 0, Vector2(200, 2), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_7t5mc"]
+_limits = [0.0, 3.0, 0.0, 200.0]
+_data = [Vector2(100, 0), 0.0, 0.0, 0, 0, Vector2(200, 3), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_buufc"]
+radius = 0.25
+
+[sub_resource type="BoxMesh" id="BoxMesh_dqkch"]
+size = Vector3(0.2, 0.1, 0.2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2txsb"]
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="World3D" id="World3D_psqf3"]
+
+[sub_resource type="Environment" id="Environment_dm847"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_chgp1"]
+
+[node name="Player" type="CharacterBody3D"]
+collision_layer = 129
+collision_mask = 13
+wall_min_slide_angle = 1.0472
+floor_max_angle = 1.0472
+script = ExtResource("1_bom0h")
+lonliness_curve = SubResource("Curve_jhx03")
+insanity_curve = SubResource("Curve_o8fc1")
+vhs_wiggle_curve = SubResource("Curve_xo05s")
+vhs_smear_curve = SubResource("Curve_dss4m")
+noise_sound_curve = SubResource("Curve_7t5mc")
+whisper_stream = ExtResource("2_smehm")
+footstep_stream = ExtResource("4_smehm")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_buufc")
+
+[node name="Noise" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_fjrip")
+pitch_scale = 0.01
+autoplay = true
+
+[node name="StepSound" type="AudioStreamPlayer3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.05893, 0)
+stream = ExtResource("4_smehm")
+volume_db = -16.203
+bus = &"LonlinessBus"
+
+[node name="CameraRoot" type="Marker3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 2.9802322e-08, -7.450581e-09, 0, 1, -3.7252903e-09, 3.7252903e-09, -7.450581e-09, 0.99999994, 0, 0.75, 0)
+
+[node name="TargetHandPosition" type="Node3D" parent="CameraRoot"]
+transform = Transform3D(0.512495, 0.041758984, -0.857674, 0.835908, 0.204287, 0.509435, 0.19648503, -0.97802013, 0.069789015, -0.48641396, -0.408851, -0.52876306)
+
+[node name="PersonalLight" type="OmniLight3D" parent="CameraRoot"]
+transform = Transform3D(1, -2.9802322e-08, 7.4505815e-09, -1.387779e-17, 1, 3.7252907e-09, -3.7252907e-09, 7.4505815e-09, 1.0000001, 0, 0, 0)
+light_energy = 0.014
+omni_range = 4.612
+omni_attenuation = 2.0
+
+[node name="Camera" type="Camera3D" parent="CameraRoot"]
+unique_name_in_owner = true
+transform = Transform3D(1, -2.9802322e-08, 7.4505815e-09, -1.387779e-17, 1, 3.7252907e-09, -3.7252907e-09, 7.4505815e-09, 1.0000001, 0, 0, 0)
+fov = 90.0
+
+[node name="Ears" type="AudioListener3D" parent="CameraRoot/Camera"]
+unique_name_in_owner = true
+current = true
+script = ExtResource("5_tuyoq")
+metadata/_custom_type_script = "uid://bjpmu5sklv5h8"
+
+[node name="hand_model" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_qhqgy")]
+transform = Transform3D(0.512495, 0.041759, -0.857674, 0.835908, 0.204287, 0.509435, 0.196485, -0.97802, 0.069789, -0.486414, 0.341149, -0.528763)
+script = ExtResource("3_dqkch")
+target = NodePath("../CameraRoot/TargetHandPosition")
+speed = 10.0
+
+[node name="Hand" type="Marker3D" parent="hand_model"]
+unique_name_in_owner = true
+transform = Transform3D(0.295822, 0.901704, -0.315309, 0.494769, -0.42699, -0.756892, -0.817126, 0.0678997, -0.572447, 0.125454, 0.174209, 0.114579)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="hand_model/Hand"]
+transform = Transform3D(0.999199, -0.0367767, -0.0158122, 0.0250798, 0.882958, -0.468782, 0.031202, 0.46801, 0.883172, 0, 0, 0)
+visible = false
+mesh = SubResource("BoxMesh_dqkch")
+
+[node name="HandContainer" type="Node3D" parent="hand_model"]
+editor_description = "This hold all invisible items."
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Tip" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.85
+anchor_right = 1.0
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 0
+label_settings = SubResource("LabelSettings_2txsb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InventoryContainer" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control/InventoryContainer"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.537255)
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Control/InventoryContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="Control/InventoryContainer/SubViewportContainer"]
+own_world_3d = true
+world_3d = SubResource("World3D_psqf3")
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(256, 224)
+render_target_update_mode = 4
+script = ExtResource("2_qxu4u")
+
+[node name="Camera3D" type="Camera3D" parent="Control/InventoryContainer/SubViewportContainer/SubViewport"]
+cull_mask = 1048574
+environment = SubResource("Environment_dm847")
+projection = 1
+fov = 90.0
+size = 0.75
+near = 0.001
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Control/InventoryContainer/SubViewportContainer/SubViewport/Camera3D"]
+layers = 2
+light_cull_mask = 4294967294
+
+[node name="ItemWheel" type="Node3D" parent="Control/InventoryContainer/SubViewportContainer/SubViewport"]
+
+[node name="Name" type="Label" parent="Control/InventoryContainer"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.1
+anchor_right = 1.0
+anchor_bottom = 0.2
+grow_horizontal = 2
+grow_vertical = 0
+label_settings = SubResource("LabelSettings_2txsb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StaminaBar" type="TextureProgressBar" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.925
+anchor_right = 0.75
+anchor_bottom = 0.935
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 0
+max_value = 1.0
+step = 0.01
+value = 0.5
+nine_patch_stretch = true
+texture_progress = SubResource("PlaceholderTexture2D_chgp1")
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
