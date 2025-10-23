@@ -6,6 +6,7 @@ class_name MousePlayerController
 
 @export var max_yaw = 45;
 @export var max_pitch = 45 / 2.0;
+@export var roll_scale = 0.25;
 @export var interaction_distance: float = 4.0;
 
 var current_hover;
@@ -19,13 +20,20 @@ func get_mouse_ray() -> PhysicsRayQueryParameters3D:
 	return query
 
 func do_camera_movement():
-	var local_mouse_position = Vector2(get_viewport().get_mouse_position()) / Vector2(get_viewport().size) * 2.0 - Vector2.ONE
-	camera.rotation = Vector3(-local_mouse_position.y * deg_to_rad(max_pitch), -local_mouse_position.x * deg_to_rad(max_yaw), 0.0);
+	var local_mouse_position = Vector2(get_viewport().get_mouse_position()) / Vector2(get_viewport().get_visible_rect().size) * 2.0 - Vector2.ONE
+	camera.rotation = Vector3(-local_mouse_position.y * deg_to_rad(max_pitch), -local_mouse_position.x * deg_to_rad(max_yaw), roll_scale * local_mouse_position.x * local_mouse_position.y * deg_to_rad(max_yaw));
 
 func handle_interaction():
 
 	var query = get_mouse_ray()
 	player.handle_iteraction(query)
+
+func _input(event: InputEvent) -> void:
+
+	if event.is_action_pressed("open_inventory"):
+		player.get_inventory().show_inventory()
+	if event.is_action_released("open_inventory"):
+		player.get_inventory().hide_inventory()
 
 func _process(delta: float):
 

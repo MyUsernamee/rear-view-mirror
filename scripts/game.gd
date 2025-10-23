@@ -46,3 +46,8 @@ func get_time():
 
 func _ready():
 	set_up_bus_effect()
+
+func _input(event: InputEvent) -> void:
+
+	if event is InputEventKey and event.is_pressed() and event.keycode == KEY_ESCAPE:
+		get_tree().quit()

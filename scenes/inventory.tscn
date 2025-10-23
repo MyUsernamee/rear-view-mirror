@@ -16,6 +16,7 @@ script = ExtResource("1_hj2ta")
 
 [node name="InventoryContainer" type="Control" parent="."]
 unique_name_in_owner = true
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -45,7 +46,7 @@ world_3d = SubResource("World3D_53g1v")
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(256, 224)
-render_target_update_mode = 4
+render_target_update_mode = 0
 script = ExtResource("2_ty45s")
 
 [node name="Camera3D" type="Camera3D" parent="InventoryContainer/SubViewportContainer/SubViewport"]

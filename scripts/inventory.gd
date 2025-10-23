@@ -44,6 +44,8 @@ func remove_item(index):
 	if selected_item >= index:
 		on_selected_item_changed.emit(inventory[selected_item])
 
+	selected_item = min(inventory.size(), selected_item)
+
 func take_current_item():
 	if selected_item > inventory.size() or inventory.is_empty():
 		return
@@ -59,12 +61,31 @@ func is_holding_item_type(item: ItemResource):
 func is_holding_item():
 	return selected_item < inventory.size() and inventory[selected_item] != null
 
-func add_item(item: Item):
+func add_item(item: Item) -> bool:
+	if inventory.size() >= ITEM_COUNT:
+		return false
+
 	# Add a display node for the item, and set its display
 	var index = inventory.size();
 	inventory.append(item);
+	item.get_parent().remove_child(item)
+
+	var view_model = item.item_descriptor.view_model
+
+	if not view_model:
+		push_warning("View model not defined for: " + item.item_descriptor.id)
+	else:
+		var view_model_instance = view_model.instantiate()
+		item_slots[index].add_child(view_model_instance)
 
 	on_item_added.emit(item);
+
+	return true
+
+func get_item(index: int) -> Item:
+	if index < 0 or index >= inventory.size():
+		return null
+	return inventory[index]
 
 func show_inventory():
 	item_viewport.visible = true;
@@ -77,7 +98,7 @@ func update_inventory_screen(delta):
 		return 
 
 	var scroll_amount = sign(Input.is_action_just_pressed("inventory_next") as int - (Input.is_action_just_pressed("inventory_back") as int))
-	selected_item = fposmod(selected_item + scroll_amount, ITEM_COUNT);
+	selected_item = posmod(selected_item + scroll_amount, ITEM_COUNT);
 
 	item_wheel.basis = item_wheel.basis.slerp(Basis(Vector3.UP, TAU / ITEM_COUNT * selected_item), 5.0 * delta);
 
@@ -89,8 +110,11 @@ func update_inventory_screen(delta):
 	else:
 		item_name.text = ""
 
-	if scroll_amount != 0:
-		on_selected_item_changed.emit(inventory[selected_item])
+	if scroll_amount != 0 and selected_item < inventory.size():
+		if selected_item < inventory.size():
+			on_selected_item_changed.emit(inventory[selected_item])
+		else:
+			on_selected_item_changed.emit(null)
 
 func _ready():
 

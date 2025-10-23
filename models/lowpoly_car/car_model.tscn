@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgulwy4g3w1mc"]
+
+[ext_resource type="PackedScene" uid="uid://clnya15hb8yjo" path="res://models/lowpoly_car/Car Asset.blend" id="1_bc7jp"]
+
+[node name="Car Asset" instance=ExtResource("1_bc7jp")]
+
+[node name="LeftHeadLampOmni" type="OmniLight3D" parent="." index="12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0, 2.25)
+shadow_enabled = true
+
+[node name="HeadLampSpotLight" type="SpotLight3D" parent="LeftHeadLampOmni" index="0"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0)
+light_energy = 7.59
+spot_range = 24.920616
+spot_attenuation = 2.0
+spot_angle = 40.0
+
+[node name="RightHeadLampOmni" type="OmniLight3D" parent="." index="13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0, 2.25)
+shadow_enabled = true
+
+[node name="HeadLampSpotLight" type="SpotLight3D" parent="RightHeadLampOmni" index="0"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0)
+light_energy = 7.59
+spot_range = 24.920616
+spot_attenuation = 2.0
+spot_angle = 40.0
+
+[node name="DashboardLight" type="OmniLight3D" parent="." index="14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4056219, 0.264802, 0.65844375)
+light_color = Color(1, 0.56078434, 0, 1)
+light_energy = 0.175
+omni_range = 0.17510091

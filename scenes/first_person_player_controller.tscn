@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://0q7rclgxesym"]
 
-[ext_resource type="Script" path="res://scripts/player.gd" id="1_tb6uh"]
+[ext_resource type="Script" uid="uid://ccom5gxlsq228" path="res://scripts/first_person_player_controller.gd" id="1_tb6uh"]
 [ext_resource type="Script" uid="uid://bjpmu5sklv5h8" path="res://addons/raytraced_audio/raytraced_audio_listener.gd" id="2_gpdnb"]
 [ext_resource type="PackedScene" uid="uid://bf3vwliq6lo2e" path="res://scenes/player_state.tscn" id="3_tlelo"]
 

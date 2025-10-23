@@ -45,3 +45,8 @@ When you turn back around you slam into a car in front of you going almost 50 mp
 It then cuts to white. Where it then reads. "Please go the speed limit. You are not being chased by a demon."
 
 End.
+
+
+## Credits
+
+[Low poly car](https://bricchi-games.itch.io/retro-car-with-interior)

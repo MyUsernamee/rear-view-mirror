@@ -1,0 +1,72 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://clnya15hb8yjo"
+path="res://.godot/imported/Car Asset.blend-f9f0c506a87d6aa91b7da92a0c69ba0e.scn"
+
+[deps]
+
+source_file="res://models/lowpoly_car/Car Asset.blend"
+dest_files=["res://.godot/imported/Car Asset.blend-f9f0c506a87d6aa91b7da92a0c69ba0e.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/root_script=null
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+materials/extract=0
+materials/extract_format=0
+materials/extract_path=""
+_subresources={
+"materials": {
+"Black_Car_Mat": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://models/lowpoly_car/materials/Black_Car_Mat.tres",
+"use_external/path": "uid://dyul0u2juw72a"
+},
+"carwindows": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://models/lowpoly_car/materials/carwindows.tres",
+"use_external/path": "uid://2pv5kfp362c6"
+}
+}
+}
+blender/nodes/visible=0
+blender/nodes/active_collection_only=false
+blender/nodes/punctual_lights=true
+blender/nodes/cameras=true
+blender/nodes/custom_properties=true
+blender/nodes/modifiers=1
+blender/meshes/colors=false
+blender/meshes/uvs=true
+blender/meshes/normals=true
+blender/meshes/export_geometry_nodes_instances=false
+blender/meshes/tangents=true
+blender/meshes/skins=2
+blender/meshes/export_bones_deforming_mesh_only=false
+blender/materials/unpack_enabled=true
+blender/materials/export_materials=1
+blender/animation/limit_playback=true
+blender/animation/always_sample=true
+blender/animation/group_tracks=true
+gltf/naming_version=2
