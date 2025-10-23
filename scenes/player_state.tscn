@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://bf3vwliq6lo2e"]
 
-[ext_resource type="Script" path="res://scripts/player.gd" id="1_bom0h"]
-[ext_resource type="Script" path="res://scripts inventory.gd" id="3_qhqgy"]
+[ext_resource type="Script" uid="uid://c07a2myh52sop" path="res://scripts/player_state.gd" id="1_2npap"]
+[ext_resource type="PackedScene" uid="uid://bgm607rj8w5f7" path="res://scenes/inventory.tscn" id="2_2npap"]
 
-[node name="Player" type="Node3D"]
-script = ExtResource("1_bom0h")
-metadata/_custom_type_script = "uid://c54dkdqommv2y"
+[node name="PlayerState" type="Node3D"]
+script = ExtResource("1_2npap")
+metadata/_custom_type_script = "uid://c07a2myh52sop"
 
-[node name="Inventory" type="Node" parent="."]
-script = ExtResource("3_qhqgy")
+[node name="Inventory" parent="." instance=ExtResource("2_2npap")]
+unique_name_in_owner = true

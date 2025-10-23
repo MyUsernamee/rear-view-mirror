@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bdqcsycxpmfop"]
+[gd_scene load_steps=11 format=3 uid="uid://bdqcsycxpmfop"]
 
 [ext_resource type="Script" uid="uid://coqxc78olp2t5" path="res://scripts/datamosh.gd" id="1_4wyf3"]
+[ext_resource type="PackedScene" uid="uid://dcox2wbo7xlg" path="res://scenes/mouse_player_controller.tscn" id="1_k0juu"]
 [ext_resource type="PackedScene" uid="uid://bi0pw32sej0rt" path="res://scenes/ui.tscn" id="2_rwgxs"]
+[ext_resource type="Texture2D" uid="uid://c6vjd4lqvsnqh" path="res://textures/256x256/Tile/Tile_04-256x256.png" id="4_k0juu"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_k0juu"]
 
@@ -30,7 +32,12 @@ metadata/_custom_type_script = "uid://coqxc78olp2t5"
 [sub_resource type="Compositor" id="Compositor_qfnet"]
 compositor_effects = Array[CompositorEffect]([SubResource("CompositorEffect_hn3vi")])
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_71j4m"]
+albedo_texture = ExtResource("4_k0juu")
+
 [node name="World" type="Node3D"]
+
+[node name="MousePlayerController" parent="." instance=ExtResource("1_k0juu")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 unique_name_in_owner = true
@@ -40,3 +47,10 @@ compositor = SubResource("Compositor_qfnet")
 [node name="UI" parent="." instance=ExtResource("2_rwgxs")]
 unique_name_in_owner = true
 z_index = 1
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1559424, -0.4550531)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.3350346)
+material_override = SubResource("StandardMaterial3D_71j4m")

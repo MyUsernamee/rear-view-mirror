@@ -105,7 +105,6 @@ func _ready():
 		slot.scale *= 0.25;
 
 		item_wheel.add_child(slot)
-
 		item_slots.append(slot);
 
 func _process(delta: float):

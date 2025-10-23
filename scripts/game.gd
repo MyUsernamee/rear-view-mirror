@@ -4,7 +4,7 @@ extends Node3D
 const DEBUG = false;
 
 @onready var world = $/root/World;
-@onready var vhs_effect: ShaderMaterial = get_node( "/root/World/%UI/%VHS" ).material
+@onready var vhs_effect: ShaderMaterial = get_node( "/root/World/UI/%VHS" ).material
 @onready var tip: Label = $/root/World/%UI/%Tip;
 @onready var environment: WorldEnvironment = get_node("/root/World/%WorldEnvironment")
 

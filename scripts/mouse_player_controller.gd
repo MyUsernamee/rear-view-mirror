@@ -5,7 +5,7 @@ class_name MousePlayerController
 @onready var player: PlayerState = $%PlayerState
 
 @export var max_yaw = 45;
-@export var may_pitch = 45 / 2.0;
+@export var max_pitch = 45 / 2.0;
 @export var interaction_distance: float = 4.0;
 
 var current_hover;
@@ -19,8 +19,8 @@ func get_mouse_ray() -> PhysicsRayQueryParameters3D:
 	return query
 
 func do_camera_movement():
-	var local_mouse_position = get_viewport().get_mouse_position() / get_viewport()
-	camera.rotation =
+	var local_mouse_position = Vector2(get_viewport().get_mouse_position()) / Vector2(get_viewport().size) * 2.0 - Vector2.ONE
+	camera.rotation = Vector3(-local_mouse_position.y * deg_to_rad(max_pitch), -local_mouse_position.x * deg_to_rad(max_yaw), 0.0);
 
 func handle_interaction():
 
@@ -30,5 +30,4 @@ func handle_interaction():
 func _process(delta: float):
 
 	handle_interaction()
-
-
+	do_camera_movement()
