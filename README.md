@@ -50,3 +50,4 @@ End.
 ## Credits
 
 [Low poly car](https://bricchi-games.itch.io/retro-car-with-interior)
+[Trees](https://elegantcrow.itch.io/psx-retro-style-tree-pack)

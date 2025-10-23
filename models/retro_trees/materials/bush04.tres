@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bgrj1mxcy14ys"]
+
+[ext_resource type="Texture2D" uid="uid://5vgacst1t4mf" path="res://models/retro_trees/textures/bush04.png" id="1_mmyir"]
+
+[resource]
+resource_name = "bush04"
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.9063318, 0.9063318, 0.9063318, 1)
+albedo_texture = ExtResource("1_mmyir")
+emission_enabled = true

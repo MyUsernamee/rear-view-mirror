@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bu4aebff68syt"]
+
+[ext_resource type="Texture2D" uid="uid://rxgu8qt0hxwe" path="res://models/retro_trees/textures/tree07.png" id="1_s8kkx"]
+
+[resource]
+resource_name = "tree07"
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.9063318, 0.9063318, 0.9063318, 1)
+albedo_texture = ExtResource("1_s8kkx")
+emission_enabled = true
