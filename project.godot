@@ -30,7 +30,7 @@ window/stretch/aspect="keep_width"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/GDTerminal/plugin.cfg", "res://addons/raytraced_audio/plugin.cfg", "res://addons/road-generator/plugin.cfg", "res://addons/scene_object_brush/plugin.cfg")
+enabled=PackedStringArray("res://addons/GDTerminal/plugin.cfg", "res://addons/raytraced_audio/plugin.cfg", "res://addons/road-generator/plugin.cfg")
 
 [input]
 

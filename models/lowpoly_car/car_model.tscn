@@ -25,9 +25,3 @@ light_energy = 7.59
 spot_range = 24.920616
 spot_attenuation = 2.0
 spot_angle = 40.0
-
-[node name="DashboardLight" type="OmniLight3D" parent="." index="14"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4056219, 0.264802, 0.65844375)
-light_color = Color(1, 0.56078434, 0, 1)
-light_energy = 0.175
-omni_range = 0.17510091

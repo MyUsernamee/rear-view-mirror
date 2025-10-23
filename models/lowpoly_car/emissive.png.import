@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b35wcd1ymj3s1"
-path.s3tc="res://.godot/imported/Emissive Texture.png-d0e591eacfe20bb2f0a2bd58fef15bf4.s3tc.ctex"
+uid="uid://va7aqjnqar7y"
+path.s3tc="res://.godot/imported/emissive.png-e1229fc0b8524ce4c130c316162f8d99.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://models/lowpoly_car/Emissive Texture.png"
-dest_files=["res://.godot/imported/Emissive Texture.png-d0e591eacfe20bb2f0a2bd58fef15bf4.s3tc.ctex"]
+source_file="res://models/lowpoly_car/emissive.png"
+dest_files=["res://.godot/imported/emissive.png-e1229fc0b8524ce4c130c316162f8d99.s3tc.ctex"]
 
 [params]
 
