@@ -23,7 +23,7 @@ func _ready() -> void:
 
 func _on_interact():
 	Game.display("")
-	Game.get_player().add_item(self);
+	Game.get_player().get_inventory().add_item(self);
 
 func _on_hover():
 	Game.display("Pickup " + item_descriptor.name + ": [" + InputMap.action_get_events("interact")[0].as_text().to_upper() + "]")

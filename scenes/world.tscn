@@ -39,3 +39,4 @@ compositor = SubResource("Compositor_qfnet")
 
 [node name="UI" parent="." instance=ExtResource("2_rwgxs")]
 unique_name_in_owner = true
+z_index = 1

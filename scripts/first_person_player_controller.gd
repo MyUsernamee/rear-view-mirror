@@ -19,7 +19,7 @@ const DROP_ITEM_HEIGHT = 0.25
 @onready var stamina_bar = $Control/StaminaBar
 @onready var hand = $%Hand;
 @onready var hand_container = hand.get_node("../HandContainer")
-@onready var player: Player = $%Player
+@onready var player: PlayerState = $%Player
 @onready var inventory: Inventory = $%Player/%Inventory
 
 var mouse_velocity = Vector2(0.0, 0.0)
@@ -94,26 +94,8 @@ func do_camera_movement():
 		camera_root.transform.basis.y = (camera_root.transform.basis.y * (Vector3(1, 0, 1))).normalized() 
 
 func handle_items():
-	var state = get_world_3d().direct_space_state
-	
 	var query = PhysicsRayQueryParameters3D.create(camera_root.global_position, camera_root.global_transform * (Vector3.FORWARD * INTERACTION_DISTANCE), 0b10)
-	query.collide_with_areas = true;
-	var result = state.intersect_ray(query)
-
-	if result and result["collider"] is Interactable:
-		var hit = result["collider"];
-
-		hit.on_hover.emit()
-
-		current_hover = hit
-
-	elif current_hover != null:
-		current_hover.stop_hover.emit();
-		current_hover = null
-
-	if current_hover and Input.is_action_just_pressed("interact"):
-		current_hover.on_interact.emit()
-		current_hover = null
+	player.handle_interaction(query);
 
 func handle_sprinting(delta):
 	if sprinting:

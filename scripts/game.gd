@@ -1,5 +1,6 @@
 extends Node3D
-
+## Manages global game state. Stores references to the player and other global state items.
+## Manages things like the scene, global effects like the audio bus, and global UI.
 const DEBUG = false;
 
 @onready var world = $/root/World;
@@ -21,7 +22,7 @@ func set_up_bus_effect():
 func get_reverb_effect():
 	return reverb_effect;
 
-func get_player():
+func get_player() -> PlayerState:
 	return player
 
 func do_transition_effect():
