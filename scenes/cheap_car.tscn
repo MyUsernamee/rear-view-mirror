@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://chy8kahm5qr1d"]
+
+[ext_resource type="PackedScene" uid="uid://clnya15hb8yjo" path="res://models/lowpoly_car/Car Asset.blend" id="1_83aru"]
+
+[node name="CheapCar" type="Node3D"]
+
+[node name="Car Asset" parent="." instance=ExtResource("1_83aru")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="LeftHeadLampOmni" type="OmniLight3D" parent="Car Asset"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0, 2.25)
+shadow_enabled = true
+
+[node name="HeadLampSpotLight" type="SpotLight3D" parent="Car Asset/LeftHeadLampOmni"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0)
+light_energy = 7.59
+spot_range = 24.920616
+spot_attenuation = 2.0
+spot_angle = 40.0
+
+[node name="RightHeadLampOmni" type="OmniLight3D" parent="Car Asset"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0, 2.25)
+shadow_enabled = true
+
+[node name="HeadLampSpotLight" type="SpotLight3D" parent="Car Asset/RightHeadLampOmni"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0)
+light_energy = 7.59
+spot_range = 24.920616
+spot_attenuation = 2.0
+spot_angle = 40.0
+
+[node name="LeftBrakeLight" type="OmniLight3D" parent="Car Asset"]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.5152683, 0, -2.351)
+light_color = Color(1, 0, 0, 1)
+shadow_enabled = true
+
+[node name="RightBrakeLight" type="OmniLight3D" parent="Car Asset"]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.59999985, 0, -2.351)
+light_color = Color(1, 0, 0, 1)
+shadow_enabled = true
+
+[editable path="Car Asset"]

@@ -6,6 +6,7 @@
 
 [node name="MousePlayerController" type="Node3D"]
 script = ExtResource("1_ce6m8")
+camera_follow_speed = 3.0
 
 [node name="PlayerState" parent="." instance=ExtResource("3_hyami")]
 unique_name_in_owner = true

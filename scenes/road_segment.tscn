@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=3 uid="uid://c71d62ut5qgip"]
+
+[ext_resource type="PackedScene" uid="uid://by4rfsp07j4od" path="res://models/road_segment/segment.blend" id="1_tt3t5"]
+[ext_resource type="PackedScene" uid="uid://bmbn77fq3ojvl" path="res://models/retro_trees/models/tree06.fbx" id="2_c3e3h"]
+[ext_resource type="PackedScene" uid="uid://cncpted4sulrf" path="res://models/retro_trees/models/tree07.fbx" id="3_47du0"]
+[ext_resource type="PackedScene" uid="uid://gc0td3qje6n7" path="res://models/retro_trees/models/tree08.fbx" id="4_2xm5a"]
+[ext_resource type="PackedScene" uid="uid://dxd6rabvijl45" path="res://models/retro_trees/models/tree12.fbx" id="5_ifpta"]
+[ext_resource type="PackedScene" uid="uid://cexu2d8v3frq8" path="res://models/retro_trees/models/tree13.fbx" id="6_8oith"]
+
+[node name="RoadSegment" type="Node3D"]
+
+[node name="segment" parent="." instance=ExtResource("1_tt3t5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0827227, 0, 0)
+
+[node name="tree06" parent="." instance=ExtResource("2_c3e3h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.400763, 0, -3.4778368)
+
+[node name="tree07" parent="." instance=ExtResource("3_47du0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.4839196, 0, 1.1627054)
+
+[node name="tree08" parent="." instance=ExtResource("4_2xm5a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.407431, 0, -3.7020645)
+
+[node name="tree12" parent="." instance=ExtResource("5_ifpta")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.22219, 0, 0.24161005)
+
+[node name="tree13" parent="." instance=ExtResource("6_8oith")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.66348, 0, 2.9295826)

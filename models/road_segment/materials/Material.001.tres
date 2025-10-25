@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://chrjnwg0c4oo1"]
+
+[ext_resource type="Texture2D" uid="uid://ld6hterl0tmn" path="res://models/road_segment/textures/road_segment_texture.png" id="1_rxufr"]
+[ext_resource type="Texture2D" uid="uid://cm1q3un336siv" path="res://models/road_segment/textures/road_segment_normal.png" id="2_wyxq4"]
+
+[resource]
+resource_name = "Material.001"
+cull_mode = 2
+albedo_texture = ExtResource("1_rxufr")
+normal_enabled = true
+normal_scale = 2.0
+normal_texture = ExtResource("2_wyxq4")
+texture_filter = 2

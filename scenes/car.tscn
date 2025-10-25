@@ -1,0 +1,131 @@
+[gd_scene load_steps=12 format=3 uid="uid://dcm3n8rqhfy48"]
+
+[ext_resource type="Script" uid="uid://bbfxu7dxlhlnb" path="res://scripts/jiggler.gd" id="1_50v30"]
+[ext_resource type="PackedScene" uid="uid://bgulwy4g3w1mc" path="res://scenes/car_model.tscn" id="1_c35m8"]
+[ext_resource type="PackedScene" uid="uid://dcox2wbo7xlg" path="res://scenes/mouse_player_controller.tscn" id="2_qt2eu"]
+[ext_resource type="Shader" uid="uid://bjf6fmae00yno" path="res://addons/Mirror3D/Mirror3D.gdshader" id="3_3mrxu"]
+[ext_resource type="Script" uid="uid://bf1v7b7ag3442" path="res://scripts/mirror.gd" id="3_jtldb"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_3mrxu"]
+viewport_path = NodePath("Car Asset/RearViewMirror/RearViewMirror_001/Viewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cp117"]
+render_priority = 0
+shader = ExtResource("3_3mrxu")
+shader_parameter/color = Color(0.9, 0.97, 0.94, 1)
+shader_parameter/mirror_texture_linear = SubResource("ViewportTexture_3mrxu")
+shader_parameter/use_mirror_texture_linear = true
+shader_parameter/distortion_strength = 0.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_cp117"]
+viewport_path = NodePath("Car Asset/LeftMirrorSurface/Viewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3mrxu"]
+render_priority = 0
+shader = ExtResource("3_3mrxu")
+shader_parameter/color = Color(0.9, 0.97, 0.94, 1)
+shader_parameter/mirror_texture_linear = SubResource("ViewportTexture_cp117")
+shader_parameter/use_mirror_texture_linear = true
+shader_parameter/distortion_strength = 0.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_4clw4"]
+viewport_path = NodePath("Car Asset/RightMirrorSurface/Viewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4clw4"]
+render_priority = 0
+shader = ExtResource("3_3mrxu")
+shader_parameter/color = Color(0.9, 0.97, 0.94, 1)
+shader_parameter/mirror_texture_linear = SubResource("ViewportTexture_4clw4")
+shader_parameter/use_mirror_texture_linear = true
+shader_parameter/distortion_strength = 0.0
+
+[node name="Car" type="Node3D"]
+script = ExtResource("1_50v30")
+jiggle_speed = 0.1
+jiggle_scale = Vector3(0.025, 0.025, 0.025)
+
+[node name="Car Asset" parent="." instance=ExtResource("1_c35m8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="RearViewMirror" parent="Car Asset" index="14"]
+transform = Transform3D(0.86056364, 0.11444955, -0.49631834, 0.0257818, 0.96339136, 0.26685816, 0.5086903, -0.24244435, 0.8261083, 0, 0.7525667, 0.40879998)
+
+[node name="RearViewMirror_001" parent="Car Asset/RearViewMirror" index="0"]
+layers = 4
+surface_material_override/0 = SubResource("ShaderMaterial_cp117")
+script = ExtResource("3_jtldb")
+size = Vector2(0.14929618, 0.053531528)
+pixels_per_unit = 2000
+cull_mask = 1048571
+
+[node name="Viewport" type="SubViewport" parent="Car Asset/RearViewMirror/RearViewMirror_001" index="0"]
+size = Vector2i(298, 107)
+
+[node name="Camera" type="Camera3D" parent="Car Asset/RearViewMirror/RearViewMirror_001/Viewport"]
+transform = Transform3D(0.8605636, -0.114449486, 0.4963181, -0.025781795, 0.9633909, 0.266858, 0.5086902, 0.24244425, -0.8261084, 0.009546969, 0.80804884, -0.89872205)
+cull_mask = 1048571
+projection = 2
+size = 0.053531528
+frustum_offset = Vector2(0.24243315, 0.066420436)
+near = 0.43155265
+far = 100000.0
+
+[node name="LeftMirrorSurface" parent="Car Asset" index="17"]
+transform = Transform3D(0.95736355, -0.0036110885, 0.2888634, 0.053667244, 0.98473907, -0.16555618, -0.28385714, 0.17399988, 0.94294715, 0.9136652, 0.30466884, 0.8305689)
+layers = 4
+surface_material_override/0 = SubResource("ShaderMaterial_3mrxu")
+script = ExtResource("3_jtldb")
+image_scaling = 1.045
+size = Vector2(0.17198086, 0.10348752)
+pixels_per_unit = 1000
+cull_mask = 1048571
+
+[node name="Viewport" type="SubViewport" parent="Car Asset/LeftMirrorSurface" index="0"]
+size = Vector2i(171, 103)
+
+[node name="Camera" type="Camera3D" parent="Car Asset/LeftMirrorSurface/Viewport"]
+transform = Transform3D(0.95736355, 0.0036110734, -0.2888634, -0.053667244, 0.98473907, -0.1655561, -0.28385723, -0.17399988, -0.94294703, -0.8788253, 0.31408417, -1.6872898)
+cull_mask = 1048571
+projection = 2
+fov = 90.0
+size = 0.10814446
+frustum_offset = Vector2(-0.2760356, -0.15846679)
+near = 0.7962198
+far = 100000.0
+
+[node name="RightMirrorSurface" parent="Car Asset" index="19"]
+transform = Transform3D(0.8227441, -0.10116619, -0.5593371, 0.10341258, 0.99425226, -0.027716083, 0.55892587, -0.035039224, 0.8284771, -0.99973917, 0.3046688, 0.83056915)
+layers = 4
+surface_material_override/0 = SubResource("ShaderMaterial_4clw4")
+script = ExtResource("3_jtldb")
+size = Vector2(0.17198092, 0.10348755)
+pixels_per_unit = 2000
+cull_mask = 1048571
+
+[node name="Viewport" type="SubViewport" parent="Car Asset/RightMirrorSurface" index="0"]
+size = Vector2i(343, 206)
+
+[node name="Camera" type="Camera3D" parent="Car Asset/RightMirrorSurface/Viewport"]
+transform = Transform3D(0.82274413, 0.10116619, 0.5593368, -0.10341258, 0.9942523, -0.02771608, 0.5589258, 0.035039216, -0.8284771, 1.0749155, 0.50370485, -2.398203)
+cull_mask = 1048571
+projection = 2
+size = 0.10348755
+frustum_offset = Vector2(0.8349227, -0.15056866)
+near = 1.3352809
+far = 100000.0
+
+[node name="LeftBrakeLight" type="OmniLight3D" parent="Car Asset"]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.5152683, 0, -2.351)
+light_color = Color(1, 0, 0, 1)
+shadow_enabled = true
+
+[node name="RightBrakeLight" type="OmniLight3D" parent="Car Asset"]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.59999985, 0, -2.351)
+light_color = Color(1, 0, 0, 1)
+shadow_enabled = true
+
+[node name="MousePlayerController" parent="." instance=ExtResource("2_qt2eu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.41739023, 0.5672347, -0.19956787)
+camera_follow_speed = 8.0
+
+[editable path="Car Asset"]

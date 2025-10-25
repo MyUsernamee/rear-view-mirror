@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://nm7d4wkam6sd"
-path.s3tc="res://.godot/imported/emissive_mult.png-8d652ce77a2e6f9ac330a138f3eb3fcc.s3tc.ctex"
+uid="uid://ojm1bqh6p22j"
+path.s3tc="res://.godot/imported/emissive_bake.png-aae459137b779e5d20236a93e4aa94a4.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://models/lowpoly_car/emissive_mult.png"
-dest_files=["res://.godot/imported/emissive_mult.png-8d652ce77a2e6f9ac330a138f3eb3fcc.s3tc.ctex"]
+source_file="res://models/lowpoly_car/emissive_bake.png"
+dest_files=["res://.godot/imported/emissive_bake.png-aae459137b779e5d20236a93e4aa94a4.s3tc.ctex"]
 
 [params]
 
